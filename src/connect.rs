@@ -247,9 +247,9 @@ impl Connector {
                 let io = http.call(dst).await?;
 
                 if let hyper_tls::MaybeHttpsStream::Https(stream) = io {
-                    if !self.nodelay {
-                        stream.get_ref().get_ref().get_ref().set_nodelay(false)?;
-                    }
+                    // if !self.nodelay {
+                    //     stream.get_ref().get_ref().get_ref().set_nodelay(false)?;
+                    // }
                     Ok(Conn {
                         inner: self.verbose.wrap(NativeTlsConn { inner: stream }),
                         is_proxy,
